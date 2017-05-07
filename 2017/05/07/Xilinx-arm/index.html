@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>Xilinx_arm交叉编译器安装 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
+  <meta name="description" content="1.首先下载官方制作好的交叉编译器Xilinx交叉编译器，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
 <meta name="keywords" content="嵌入式arm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xilinx_arm交叉编译器安装">
 <meta property="og:url" content="https://yaris079.github.io/2017/05/07/Xilinx-arm/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
-<meta property="og:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
-<meta property="og:updated_time" content="2017-05-07T07:20:27.201Z">
+<meta property="og:description" content="1.首先下载官方制作好的交叉编译器Xilinx交叉编译器，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
+<meta property="og:updated_time" content="2017-05-07T07:26:26.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xilinx_arm交叉编译器安装">
-<meta name="twitter:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
+<meta name="twitter:description" content="1.首先下载官方制作好的交叉编译器Xilinx交叉编译器，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
   
     <link rel="alternative" href="/atom.xml" title="Yaris079的个人博客" type="application/atom+xml">
   
@@ -84,6 +84,8 @@
 	        
 				<li><a href="/tags/算法">算法</a></li>
 	        
+				<li><a href="/tags/嵌入式arm">嵌入式arm</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -146,6 +148,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -164,15 +168,17 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/随笔/">随笔</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/hexo/">hexo</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/hexo/">hexo</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/计算机视觉/">计算机视觉</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/计算机视觉/">计算机视觉</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/算法">算法</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/算法">算法</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/嵌入式arm">嵌入式arm</a></li>
 		        
 				</ul>
 			</nav>
@@ -207,13 +213,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.首先下载官方制作好的交叉编译器<a href="http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin" target="_blank" rel="external">http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin</a><br><a id="more"></a><br>2.安装32位库<br>    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install ia32-libs</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpkg --print-architecture</div></pre></td></tr></table></figure>
-<p> 你将会看到像下面这样的内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">打开多架构支持，下载支持：</div></pre></td></tr></table></figure></p>
-<p>dpkg–add-architecturei386<br>apt-get update<br>sudo apt-get install libc6:i386<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3.Xilinux ARM交叉编译器的安装</div><div class="line"> 1） Xilinx提供的直接可用的交叉编译器xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin。接下来安装交叉编译器，指令如下：</div></pre></td></tr></table></figure></p>
-<p>chmod +x xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin      //将其设置成可执行文件<br>sudo dpkg-reconfigure -plow dash      //这一步只为了修复/bin/sh指向dash而不是bash或其他支持的shell的错误。执行命令后，在出现的界面中，选择否<br>./xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin       //开始安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在安装过程中，安装向导会给出选择“Add product to the PATH?”。若选择“Do not modify PATH.”，则需要在安装完成后手动添加环境变量，接下来会讲到。安装路径可以用默认路径，为 /root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux</div><div class="line"></div><div class="line">2）安装完后，若需要手动添加环境变量，以后每次编译软件的时候都需要通过export指令将编译环境路径加入到PATH环境变量，在终端中输入命令如下：</div></pre></td></tr></table></figure></p>
-<p>export ARCH=arm<br>exportCROSS_COMPILE=arm-xilinx-linux-gnueabi-<br>exportPATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:$PATH<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">若不想每次都输入，就在通过gedit /etc/bash.bashrc指令打开bash.bashrc文件，在里面加入上述指令，这样开机就会自动执行了。</div><div class="line"></div><div class="line">至此，系统环境已搭成，可以通过如下命令来验证：</div></pre></td></tr></table></figure></p>
-<p>arm-xilinx-linux-gnueabi-gcc-v      //打印版本命令。如果可以打印出交叉编译器的版本信息，则说明系统环境设置成功。<br>```<br>在最后一行会显示编译器的版本信息。</p>
+        <p>1.首先下载官方制作好的交叉编译器<a href="http://xilinx.wikidot.com/zynq-tools" target="_blank" rel="external">Xilinx交叉编译器</a>，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin<br><a id="more"></a><br>2.安装32位库<br>    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install ia32-libs</div></pre></td></tr></table></figure></p>
+<p>Ubuntu16.04已经不再支持这个源，可以使用以下操作安装。<br>查看现有架构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpkg --print-architecture</div></pre></td></tr></table></figure></p>
+<p> 你将会看到像下面这样的内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">amd64</div></pre></td></tr></table></figure></p>
+<p>打开多架构支持，下载安装32位库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dpkg--add-architecturei386</div><div class="line">apt-get update</div><div class="line">sudo apt-get install libc6:i386</div></pre></td></tr></table></figure></p>
+<p>3.Xilinux ARM交叉编译器的安装<br> 1） Xilinx提供的直接可用的交叉编译器xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin。接下来安装交叉编译器，指令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod +x xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin      //将其设置成可执行文件</div><div class="line">sudo dpkg-reconfigure -plow dash      //这一步只为了修复/bin/sh指向dash而不是bash或其他支持的shell的错误。执行命令后，在出现的界面中，选择否</div><div class="line">./xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin       //开始安装</div></pre></td></tr></table></figure></p>
+<p>在安装过程中，安装向导会给出选择“Add product to the PATH?”。若选择“Do not modify PATH.”，则需要在安装完成后手动添加环境变量，接下来会讲到。安装路径可以用默认路径，为 /root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux</p>
+<p>2）安装完后，若需要手动添加环境变量，以后每次编译软件的时候都需要通过export指令将编译环境路径加入到PATH环境变量，在终端中输入命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export ARCH=arm</div><div class="line">exportCROSS_COMPILE=arm-xilinx-linux-gnueabi-</div><div class="line">exportPATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:$PATH</div></pre></td></tr></table></figure></p>
+<p>若不想每次都输入，就在通过gedit /etc/bash.bashrc指令打开bash.bashrc文件，在里面加入上述指令，这样开机就会自动执行了。</p>
+<p>至此，系统环境已搭成，可以通过如下命令来验证：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arm-xilinx-linux-gnueabi-gcc-v      //打印版本命令。如果可以打印出交叉编译器的版本信息，则说明系统环境设置成功。</div></pre></td></tr></table></figure></p>
+<p>在最后一行会显示编译器的版本信息。</p>
 
       
 
@@ -451,19 +460,19 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">嵌入式arm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">嵌入式arm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
