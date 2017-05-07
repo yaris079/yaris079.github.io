@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://yaris079.github.io">
-  <title>Archives | Yaris079的个人博客</title>
+  <title>Xilinx_arm交叉编译器安装 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yaris079&apos;s personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yaris079的个人博客">
-<meta property="og:url" content="https://yaris079.github.io/archives/index.html">
+  <meta name="description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xilinx_arm交叉编译器安装">
+<meta property="og:url" content="https://yaris079.github.io/2017/05/07/Xilinx-arm/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
-<meta property="og:description" content="Yaris079&apos;s personal blog">
+<meta property="og:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
+<meta property="og:updated_time" content="2017-05-07T06:38:12.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yaris079的个人博客">
-<meta name="twitter:description" content="Yaris079&apos;s personal blog">
+<meta name="twitter:title" content="Xilinx_arm交叉编译器安装">
+<meta name="twitter:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
   
     <link rel="alternative" href="/atom.xml" title="Yaris079的个人博客" type="application/atom+xml">
   
@@ -185,190 +187,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Xilinx-arm" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Xilinx_arm交叉编译器安装
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/Xilinx-arm/" class="archive-article-date">
+
+        
+        <a href="/2017/05/07/Xilinx-arm/" class="archive-article-date">
   	<time datetime="2017-05-07T06:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/Xilinx-arm/">Xilinx_arm交叉编译器安装</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.首先下载官方制作好的交叉编译器<a href="http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin" target="_blank" rel="external">http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin</a></p>
+<p>2.安装32位库<br>    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：<br><code>apt-get install ia32-libs</code><br> 如果是ubuntu16.04的系统，已经不再支持ia32-lins，使用下面的命令安装兼容包。<br> <code>dpkg --print-architecture</code><br> 你将会看到像下面这样的内容:<br> <code>amd64</code><br>打开多架构支持，下载支持：<br> <code>dpkg--add-architecturei386
+ apt-get update
+ sudo apt-get install libc6:i386</code></p>
+<p>3.Xilinux ARM交叉编译器的安装<br> 1） Xilinx提供的直接可用的交叉编译器xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin。接下来安装交叉编译器，指令如下：<br>``<br>chmod +x xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin      //将其设置成可执行文件</p>
+<p>sudo dpkg-reconfigure -plow dash      //这一步只为了修复/bin/sh指向dash而不是bash或其他支持的shell的错误。执行命令后，在出现的界面中，选择否</p>
+<p>./xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin       //开始安装<br>``<br> 在安装过程中，安装向导会给出选择“Add product to the PATH?”。若选择“Do not modify PATH.”，则需要在安装完成后手动添加环境变量，接下来会讲到。安装路径可以用默认路径，为 /root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux</p>
+<p>2）安装完后，若需要手动添加环境变量，以后每次编译软件的时候都需要通过export指令将编译环境路径加入到PATH环境变量，在终端中输入命令如下：<br>``<br>export ARCH=arm</p>
+<p>exportCROSS_COMPILE=arm-xilinx-linux-gnueabi-</p>
+<p>exportPATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:$PATH<br>``<br>若不想每次都输入，就在通过gedit /etc/bash.bashrc指令打开bash.bashrc文件，在里面加入上述指令，这样开机就会自动执行了。</p>
+<p>至此，系统环境已搭成，可以通过如下命令来验证：<br><code>arm-xilinx-linux-gnueabi-gcc-v      //打印版本命令。如果可以打印出交叉编译器的版本信息，则说明系统环境设置成功。</code></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://yaris079.github.io/2017/05/07/Xilinx-arm/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/18/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-18T07:54:21.339Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/18/hello-world/">Hello World</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/18/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/13/hanoi/" class="archive-article-date">
-  	<time datetime="2017-04-13T01:58:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/13/hanoi/">hanoi</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/05/how-to-write-a-hexo-artical/" class="archive-article-date">
-  	<time datetime="2017-04-04T23:35:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/05/how-to-write-a-hexo-artical/">如何写一篇hexo博客</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/27/first-blog/" class="archive-article-date">
-  	<time datetime="2017-03-27T13:48:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/27/first-blog/">first blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
     
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=undefined"></script>
+</section>
+
+    
+
+
+
 
 
           </div>
@@ -399,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
