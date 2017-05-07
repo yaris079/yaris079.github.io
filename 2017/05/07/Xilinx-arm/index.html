@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>Xilinx_arm交叉编译器安装 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
+  <meta name="description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xilinx_arm交叉编译器安装">
 <meta property="og:url" content="https://yaris079.github.io/2017/05/07/Xilinx-arm/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
-<meta property="og:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
-<meta property="og:updated_time" content="2017-05-07T06:38:12.972Z">
+<meta property="og:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
+<meta property="og:updated_time" content="2017-05-07T06:40:35.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xilinx_arm交叉编译器安装">
-<meta name="twitter:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin 2.安装32位库    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：apt-get inst">
+<meta name="twitter:description" content="1.首先下载官方制作好的交叉编译器http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin">
   
     <link rel="alternative" href="/atom.xml" title="Yaris079的个人博客" type="application/atom+xml">
   
@@ -207,8 +207,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.首先下载官方制作好的交叉编译器<a href="http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin" target="_blank" rel="external">http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin</a></p>
-<p>2.安装32位库<br>    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：<br><code>apt-get install ia32-libs</code><br> 如果是ubuntu16.04的系统，已经不再支持ia32-lins，使用下面的命令安装兼容包。<br> <code>dpkg --print-architecture</code><br> 你将会看到像下面这样的内容:<br> <code>amd64</code><br>打开多架构支持，下载支持：<br> <code>dpkg--add-architecturei386
+        <p>1.首先下载官方制作好的交叉编译器<a href="http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin" target="_blank" rel="external">http://xilinx.wikidot.com/zynq-tools，下载的文件为xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin</a><br><a id="more"></a><br>2.安装32位库<br>    64位的系统用户在安装GNU工具包时可能会遇到找不到依赖关系的问题，这是由于Ubuntu64位发行版少一些32位库。可以通过如下命令安装：<br><code>apt-get install ia32-libs</code><br> 如果是ubuntu16.04的系统，已经不再支持ia32-lins，使用下面的命令安装兼容包。<br> <code>dpkg --print-architecture</code><br> 你将会看到像下面这样的内容:<br> <code>amd64</code><br>打开多架构支持，下载支持：<br> <code>dpkg--add-architecturei386
  apt-get update
  sudo apt-get install libc6:i386</code></p>
 <p>3.Xilinux ARM交叉编译器的安装<br> 1） Xilinx提供的直接可用的交叉编译器xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin。接下来安装交叉编译器，指令如下：<br>``<br>chmod +x xilinx-2011.09-50-arm-xilinx-linux-gnueabi.bin      //将其设置成可执行文件</p>
@@ -444,15 +443,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
