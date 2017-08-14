@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2017/05/07/Qt-arm/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="Qt是一个跨平台的C++图形用户界面应用程序框架，它提供给应用程序开发者建立艺术级的图形用户界面所需的所用功能。Qt是完全面向对象的，很容易扩展并且允许真正的组件编程。">
-<meta property="og:updated_time" content="2017-05-07T14:48:22.341Z">
+<meta property="og:updated_time" content="2017-05-10T06:34:38.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt_arm">
 <meta name="twitter:description" content="Qt是一个跨平台的C++图形用户界面应用程序框架，它提供给应用程序开发者建立艺术级的图形用户界面所需的所用功能。Qt是完全面向对象的，很容易扩展并且允许真正的组件编程。">
@@ -68,7 +68,7 @@
 		  <h1 class="header-author"><a href="/">yaris</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">每天进步一点点</p>
+		<p class="header-subtitle">Code改变世界</p>
 		
 
 		<nav class="header-menu">
@@ -134,7 +134,7 @@
 			  <h1 class="header-author js-header-author">yaris</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>每天进步一点点<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>Code改变世界<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -223,7 +223,7 @@
 <p>该代码用于对Qt库的裁剪配置，因为Qt库过大，如果完全编译的话，可能最终arm板负载不了，所以需要裁剪。而裁剪的参数没有规定的，你甚至可以不裁剪，但一般情况会把鼠标库，例子，样例代码等去掉。你可以输入./configure  -help来查看各选项的含义，但都是英文的。以上“\”符号表示该行命令没有结束，接着下一行。如果把上述代码复制到终端命令行没有出错，则会出现一个提示选择信息，那是QT安装的版本选择信息，一般选择“O”，意思是开源(opensource)，然后继续。    本代码第二行-prefix后的地址就是编译安装的地址。</p>
 <p>配置完成后就可以对源代码进行编译了，编译时间比较长，大概需要1~2个小时，编译命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make</div></pre></td></tr></table></figure></p>
 <p>成功编译后，执行安装命令，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make install</div></pre></td></tr></table></figure></p>
-<h4 id="2-配置ARM下的QtCreator"><a href="#2-配置ARM下的QtCreator" class="headerlink" title="2.配置ARM下的QtCreator"></a>2.配置ARM下的QtCreator</h4><p>打开QtCreator，在菜单栏选择tool→Options命令，打开QtCreator设置选项，单击左侧的Build&amp;Run按钮。<br>首先配置编译工具，使用交叉编译器。右侧选择Compilers(编译器)，可以看到默认的是x86下的GCC，只能编译PC下运行的Qt程序。单击右侧的Add(添加)按钮，选择GCC，增加ARM下的编译器，输入编译器名字和路径，路径为root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/arm-xilinx-linux-gnueabi-g++，单击Apply(应用)按钮。<br>切换到Qt Versions(Qt版本)选项，单击Add按钮，弹出qmake选择窗口，选择路径为/usr/local/Trolltech/QtEmbedded-4.6.3-arm/bin/qmake。<br>切换到Kits(配套元件)选项，单击Add按钮，添加名称为QtEmbedded-4.8.5-arm，设备类型选择Android Device，编译器和Qt Versions均选择我们新添加的。点击OK按钮完成设置。</p>
+<h4 id="2-配置ARM下的QtCreator"><a href="#2-配置ARM下的QtCreator" class="headerlink" title="2.配置ARM下的QtCreator"></a>2.配置ARM下的QtCreator</h4><p>打开QtCreator，在菜单栏选择tool→Options命令，打开QtCreator设置选项，单击左侧的Build&amp;Run按钮。<br>首先配置编译工具，使用交叉编译器。右侧选择Compilers(编译器)，可以看到默认的是x86下的GCC，只能编译PC下运行的Qt程序。单击右侧的Add(添加)按钮，选择GCC，增加ARM下的编译器，输入编译器名字和路径，路径为root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/arm-xilinx-linux-gnueabi-g++，单击Apply(应用)按钮。<br>切换到Qt Versions(Qt版本)选项，单击Add按钮，弹出qmake选择窗口，选择路径为/usr/local/Trolltech/QtEmbedded-4.6.3-arm/bin/qmake。<br>切换到Kits(配置套件)选项，单击Add按钮，添加名称为QtEmbedded-4.8.5-arm，设备类型选择Android Device，编译器和Qt Versions均选择我们新添加的。点击OK按钮完成设置。</p>
 
       
 
@@ -237,7 +237,7 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢！<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     <div class="reward-box-item">
@@ -347,6 +347,11 @@
       </div>
     </a>
   
+  
+    <a href="/2017/06/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -465,11 +470,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
