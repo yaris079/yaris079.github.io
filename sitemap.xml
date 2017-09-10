@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaris079.github.io/2017/04/05/how-to-write-a-hexo-artical/</loc>
+    
+    <lastmod>2017-09-10T10:42:04.782Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaris079.github.io/2017/05/07/Qt-arm/</loc>
     
     <lastmod>2017-05-10T06:34:38.414Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://yaris079.github.io/2017/05/07/Xilinx-arm/</loc>
     
     <lastmod>2017-05-07T07:43:30.086Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yaris079.github.io/2017/04/05/how-to-write-a-hexo-artical/</loc>
-    
-    <lastmod>2017-05-07T06:20:21.792Z</lastmod>
     
   </url>
   
