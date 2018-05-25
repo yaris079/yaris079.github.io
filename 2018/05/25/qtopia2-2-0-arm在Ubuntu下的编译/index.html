@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2018/05/25/qtopia2-2-0-arm在Ubuntu下的编译/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="1.先编译第三方库编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面">
-<meta property="og:updated_time" content="2018-05-25T13:14:13.459Z">
+<meta property="og:updated_time" content="2018-05-25T13:17:11.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qtopia2.2.0-arm在Ubuntu下的编译">
 <meta name="twitter:description" content="1.先编译第三方库编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面">
@@ -220,8 +220,8 @@
 <p>注意：编译过程中产生的状态信息将记录到当前目录下的 qtopia2.2.0Makelog 文件里面，<br>如果编译过程中产生了大量的错误信息，打开该文件，查找 error 关键字进行问题的定位，里面记录的信息对您很有帮助，有时焦点不会停留在出现错误的位置，这时查看日志文件就很重要了。 </p>
 <h3 id="2-常见bug"><a href="#2-常见bug" class="headerlink" title="2 常见bug"></a>2 常见bug</h3><h4 id="2-1-open函数缺少必要的参数"><a href="#2-1-open函数缺少必要的参数" class="headerlink" title="2.1 open函数缺少必要的参数"></a>2.1 open函数缺少必要的参数</h4><p>   错误信息：<br><code>In function ‘int open(const char*, int, ...)’, 
     inlined from ‘QMemoryFileData* QMemoryFile::openData(const QString&amp;, int, uint)’ at tools/qmemoryfile_unix.cpp:143:54: 
-/usr/include/i386-linux-gnu/bits/fcntl2.h:51:26: error: call to ‘__open_missing_mode’ declared with attribute error: open with O_CREAT in second argument needs 3 arguments</code><br>　　修改：<br>　　文件路径：（此错误有两处）<br>　　<code>./root/yizhi/qtopia-free-2.2.0/qt2/src/tools/qmemoryfile_unix.cpp</code></p>
-<p>　　<code>./root/yizhi/qtopia-free-2.2.0/qtopia/src/libraries/qtopia/qmemoryfile_unix.cpp</code><br>　　找到：（143行）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY);</div></pre></td></tr></table></figure></p>
+/usr/include/i386-linux-gnu/bits/fcntl2.h:51:26: error: call to ‘__open_missing_mode’ declared with attribute error: open with O_CREAT in second argument needs 3 arguments</code><br>　　修改：<br>　　文件路径：（此错误有两处）<br>　　<code>./root/yizhi/qtopia-free-2.2.0/qt2/src/tools/qmemoryfile_unix.cpp</code>　　找到：（143行）<br>　　<code>./root/yizhi/qtopia-free-2.2.0/qtopia/src/libraries/qtopia/qmemoryfile_unix.cpp</code>　　找到：（141行） </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY);</div></pre></td></tr></table></figure>
 <p>修改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY, 0666);</div></pre></td></tr></table></figure></p>
 <h4 id="2-2缺少头文件错误"><a href="#2-2缺少头文件错误" class="headerlink" title="2.2缺少头文件错误"></a>2.2缺少头文件错误</h4><p>错误信息：<br><code>../include/qmap.h:107:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qmap.h:223:13: error: ‘ptrdiff_t’ does not name a type 
@@ -521,11 +521,11 @@ minefield.h:106: error: extra qualification
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
