@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2018/05/25/qtopia2-2-0-arm在Ubuntu下的编译/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="1.先编译第三方库编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面">
-<meta property="og:updated_time" content="2018-05-25T13:17:11.163Z">
+<meta property="og:updated_time" content="2018-05-25T13:19:23.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qtopia2.2.0-arm在Ubuntu下的编译">
 <meta name="twitter:description" content="1.先编译第三方库编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面">
@@ -227,7 +227,9 @@
 ../include/qmap.h:223:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qvaluelist.h:88:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qvaluelist.h:164:13: error: ‘ptrdiff_t’ does not name a type 
-make[2]: *** [.obj/release-shared-mt/qapplication_x11.o] Error 1</code><br>修改方法：<br>搜索到qmap.h和qvaluelist.h文件后加上：<br>在qtopia-2.2.0-FriendlyARM/dqt/include的qvaluelist.h和qmap.h文件下增加两个头文件：#include “stddef.h”和#include <cstddef><br>搜索文件命令: find –name “qmap.h”   </cstddef></p>
+make[2]: *** [.obj/release-shared-mt/qapplication_x11.o] Error 1</code><br>修改方法： </p>
+<p>在qtopia-free-2.2.0/dqt/include的qvaluelist.h和qmap.h文件下增加两个头文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include "stddef.h"</span></div><div class="line"><span class="comment">#include &lt;cstddef&gt;</span></div></pre></td></tr></table></figure></p>
+<p>搜索文件命令: find –name “qmap.h”   </p>
 <h4 id="2-3-使用未定义的类"><a href="#2-3-使用未定义的类" class="headerlink" title="2.3 使用未定义的类"></a>2.3 使用未定义的类</h4><p>错误信息：<br><code>/root/yizhi/qtopia-free-2.2.0/qt2/include/qwindowsystem_qws.h:230: error: &#39;QWSInputMethod&#39; has not been declared 
 /root/yizhi/qtopia-free-2.2.0/qt2/include/qwindowsystem_qws.h:237: error: &#39;QWSGestureMethod&#39; has not been declared 
 make[1]: *** [allmoc.o] Error 1</code><br>修改：<br>cd /root/yizhi/qtopia-free-2.2.0/qt2/src/kernel<br>gedit qwindowsystem_qws.h<br>在前面增加以下两行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class QWSInputMethod; </div><div class="line">class QWSGestureMethod;</div></pre></td></tr></table></figure></p>
