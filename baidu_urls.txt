@@ -1,3 +1,3 @@
+https://yaris079.github.io/2018/05/25/qtopia2-2-0-arm在Ubuntu下的编译/
+https://yaris079.github.io/2018/05/25/qtopia2.2.0-pc complie/
 https://yaris079.github.io/2017/05/07/Qt-arm/
-https://yaris079.github.io/2017/05/07/Xilinx-arm/
-https://yaris079.github.io/2017/04/13/hanoi/
