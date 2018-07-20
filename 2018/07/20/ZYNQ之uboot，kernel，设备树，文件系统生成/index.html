@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、 交叉编译器：使用xilinx提供的编译器arm-xilinx-linux-gnueabi- Version 4.6.1版本。 1. 添加交叉编译器的环境变量：123export ARCH=armexport CROSS_COMPILE=arm-xilinx-linux-gnueabi-export PATH=/root/CodeSourcery/Sourcery_CodeBench_Lite">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/07201540.jpg">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/12021105.jpg">
-<meta property="og:updated_time" content="2018-07-20T08:50:21.464Z">
+<meta property="og:updated_time" content="2018-07-20T09:05:32.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZYNQ之uboot，kernel，设备树，文件系统生成">
 <meta name="twitter:description" content="一、 交叉编译器：使用xilinx提供的编译器arm-xilinx-linux-gnueabi- Version 4.6.1版本。 1. 添加交叉编译器的环境变量：123export ARCH=armexport CROSS_COMPILE=arm-xilinx-linux-gnueabi-export PATH=/root/CodeSourcery/Sourcery_CodeBench_Lite">
@@ -218,8 +218,9 @@
       
         <h3 id="一、-交叉编译器："><a href="#一、-交叉编译器：" class="headerlink" title="一、 交叉编译器："></a>一、 交叉编译器：</h3><p>使用xilinx提供的编译器arm-xilinx-linux-gnueabi- Version 4.6.1版本。</p>
 <h4 id="1-添加交叉编译器的环境变量："><a href="#1-添加交叉编译器的环境变量：" class="headerlink" title="1. 添加交叉编译器的环境变量："></a>1. 添加交叉编译器的环境变量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ARCH=arm</div><div class="line"><span class="built_in">export</span> CROSS_COMPILE=arm-xilinx-linux-gnueabi-</div><div class="line"><span class="built_in">export</span> PATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:<span class="variable">$PATH</span></div></pre></td></tr></table></figure>
-<h4 id="2-检验交叉编译器安装是否成功："><a href="#2-检验交叉编译器安装是否成功：" class="headerlink" title="2. 检验交叉编译器安装是否成功："></a>2. 检验交叉编译器安装是否成功：</h4><p>在终端输入arm-xilinx-linux-gnueabi-gcc –v  察看版本号；</p>
+<h4 id="2-检验交叉编译器安装是否成功："><a href="#2-检验交叉编译器安装是否成功：" class="headerlink" title="2. 检验交叉编译器安装是否成功："></a>2. 检验交叉编译器安装是否成功：</h4><p>在终端输入arm-xilinx-linux-gnueabi-gcc –v  查看版本号；</p>
 <p>说明安装成功。</p>
+<a id="more"></a>
 <h3 id="二、u-boot"><a href="#二、u-boot" class="headerlink" title="二、u-boot"></a>二、u-boot</h3><p>使用从xilinx的github仓库上下载的u-boot-xlnx-xilinx-v2015.4.zip版本。<br>下载dtc编译器。<a href="https://git.kernel.org/pub/scm/utils/dtc/dtc.git" target="_blank" rel="external">https://git.kernel.org/pub/scm/utils/dtc/dtc.git</a><br>参考xilinx的wiki <a href="http://www.wiki.xilinx.com/Fetch%20Sources" target="_blank" rel="external">http://www.wiki.xilinx.com/Fetch%20Sources</a></p>
 <h4 id="1-u-boot编译过程中需要用到dtc编译器，根据xilinx的wiki指导进行下载。"><a href="#1-u-boot编译过程中需要用到dtc编译器，根据xilinx的wiki指导进行下载。" class="headerlink" title="1.u-boot编译过程中需要用到dtc编译器，根据xilinx的wiki指导进行下载。"></a>1.u-boot编译过程中需要用到dtc编译器，根据xilinx的wiki指导进行下载。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://git.kernel.org/pub/scm/utils/dtc/dtc.git</div></pre></td></tr></table></figure>
 <p>进入dtc目录，执行make命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> dtc</div><div class="line">make</div></pre></td></tr></table></figure></p>
@@ -245,25 +246,12 @@
 <p>4.压缩文件系统。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gzip arm_ramdisk.image</div></pre></td></tr></table></figure></p>
 <p>5.生成uramdisk.image.gz文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkimage -A arm -T ramdisk -C gzip <span class="_">-d</span> arm_ramdisk.image.gz uramdisk.image.gz</div></pre></td></tr></table></figure></p>
 <p><img src="/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/12021105.jpg" alt="icon 2"></p>
-<h3 id="六、-按照zynq-zed-dts中的分区，烧写BOOT-bin、devicrtree-dtb、uImage、ramdisk："><a href="#六、-按照zynq-zed-dts中的分区，烧写BOOT-bin、devicrtree-dtb、uImage、ramdisk：" class="headerlink" title="六、 按照zynq_zed.dts中的分区，烧写BOOT.bin、devicrtree.dtb、uImage、ramdisk："></a>六、 按照zynq_zed.dts中的分区，烧写BOOT.bin、devicrtree.dtb、uImage、ramdisk：</h3><ol>
-<li><p>首先使用SD卡启动，进入u-boot命令行；</p>
-</li>
-<li><p>开启TFTP服务器，使用tftp将BOOT.bin通过网络烧写道qspi的0x0地址：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000 BOOT.bin  //加载到内存</div><div class="line">sf probe 0 0 0</div><div class="line">sf erase 0x0 0x100000 //擦除1M空间</div><div class="line">sf write 0x800000  0x0 0x100000 //写入qspi</div></pre></td></tr></table></figure>
-</li>
-<li><p>烧写 uImage</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000 uImage </div><div class="line">sf erase 0x100000 0x600000</div><div class="line">sf write 0x800000  0x100000 0x600000</div></pre></td></tr></table></figure>
-</li>
-<li><p>烧写 devicetree.dtb</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000</div><div class="line">sf erase 0x700000 0x100000</div><div class="line">sf write 0x800000  0x700000 0x100000</div></pre></td></tr></table></figure>
-</li>
-<li><p>烧写 ramdisk</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp  0x4000000 ramdisk</div><div class="line">sf erase 800000 1200000</div><div class="line">sf write 0x4000000 800000 1200000</div></pre></td></tr></table></figure>
-</li>
-<li><p>烧写 fpga生成的 xx.bit程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp  0x4000000 xx.bit</div><div class="line">sf erase 1A00000 500000</div><div class="line">sf write 0x8000000 1A00000 500000</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h3 id="六、-按照zynq-zed-dts中的分区，烧写BOOT-bin、devicrtree-dtb、uImage、ramdisk："><a href="#六、-按照zynq-zed-dts中的分区，烧写BOOT-bin、devicrtree-dtb、uImage、ramdisk：" class="headerlink" title="六、 按照zynq_zed.dts中的分区，烧写BOOT.bin、devicrtree.dtb、uImage、ramdisk："></a>六、 按照zynq_zed.dts中的分区，烧写BOOT.bin、devicrtree.dtb、uImage、ramdisk：</h3><p>1.首先使用SD卡启动，进入u-boot命令行；</p>
+<p>2.开启TFTP服务器，使用tftp将BOOT.bin通过网络烧写道qspi的0x0地址：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000 BOOT.bin  //加载到内存</div><div class="line">sf probe 0 0 0</div><div class="line">sf erase 0x0 0x100000 //擦除1M空间</div><div class="line">sf write 0x800000  0x0 0x100000 //写入qspi</div></pre></td></tr></table></figure></p>
+<p>3.烧写 uImage<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000 uImage </div><div class="line">sf erase 0x100000 0x600000</div><div class="line">sf write 0x800000  0x100000 0x600000</div></pre></td></tr></table></figure></p>
+<p>4.烧写 devicetree.dtb<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp 0x800000</div><div class="line">sf erase 0x700000 0x100000</div><div class="line">sf write 0x800000  0x700000 0x100000</div></pre></td></tr></table></figure></p>
+<p>5.烧写 ramdisk<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp  0x4000000 ramdisk</div><div class="line">sf erase 800000 1200000</div><div class="line">sf write 0x4000000 800000 1200000</div></pre></td></tr></table></figure></p>
+<p>6.烧写 fpga生成的 xx.bit程序<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tftp  0x4000000 xx.bit</div><div class="line">sf erase 1A00000 500000</div><div class="line">sf write 0x8000000 1A00000 500000</div></pre></td></tr></table></figure></p>
 <h3 id="七、-设置u-boot参数及启动方式："><a href="#七、-设置u-boot参数及启动方式：" class="headerlink" title="七、 设置u-boot参数及启动方式："></a>七、 设置u-boot参数及启动方式：</h3><p>将板卡启动方式改为qspi启动.进入u-boot命令行,输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setenv bootcmd  <span class="string">'sf probe 0 0 0 &amp;&amp; echo  qspi-bitstream is loading ... ... &amp;&amp; sf read 0x800000 0x1A00000 0x500000 &amp;&amp; fpga loadb 0 0x800000 0x400000 &amp;&amp; echo uIamge is loading ... ... &amp;&amp; sf read 0x2080000 0x100000 0x600000 &amp;&amp;echo deviceTree is loading ... ... &amp;&amp; sf read 0x2000000 0x700000 0x100000 &amp;&amp; echo ramdisk.image is loading ... ... &amp;&amp; sf read 0x4000000 0x800000 0x1200000 &amp;&amp; bootm 0x2080000 0x4000000 0x2000000'</span></div><div class="line"></div><div class="line">saveenv</div></pre></td></tr></table></figure></p>
 <h3 id="八、-重启板卡，顺利从qspi启动"><a href="#八、-重启板卡，顺利从qspi启动" class="headerlink" title="八、 重启板卡，顺利从qspi启动:"></a>八、 重启板卡，顺利从qspi启动:</h3>
       
@@ -491,7 +479,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">嵌入式arm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,15 +495,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">嵌入式arm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">arm嵌入式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
