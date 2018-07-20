@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaris079.github.io/2018/07/20/ZYNQ%E4%B9%8Buboot%EF%BC%8Ckernel%EF%BC%8C%E8%AE%BE%E5%A4%87%E6%A0%91%EF%BC%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%94%9F%E6%88%90/</loc>
+    
+    <lastmod>2018-07-20T08:50:21.464Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yaris079.github.io/2017/05/07/Xilinx-arm/</loc>
+    
+    <lastmod>2018-07-20T07:28:46.140Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaris079.github.io/2017/05/07/Qt-arm/</loc>
     
     <lastmod>2018-07-19T11:22:00.424Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>https://yaris079.github.io/2017/04/13/hanoi/</loc>
     
     <lastmod>2017-09-10T10:51:21.895Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yaris079.github.io/2017/05/07/Xilinx-arm/</loc>
-    
-    <lastmod>2017-09-10T10:48:59.159Z</lastmod>
     
   </url>
   
