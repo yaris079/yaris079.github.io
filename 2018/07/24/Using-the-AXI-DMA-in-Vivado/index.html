@@ -63,7 +63,7 @@
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140731_150759.png">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140731_150845.png">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_122245.png">
-<meta property="og:updated_time" content="2018-07-24T01:52:38.247Z">
+<meta property="og:updated_time" content="2018-07-24T01:53:45.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using the AXI DMA in Vivado">
 <meta name="twitter:description" content="此文是转载自 http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html 我在测试AXI DMA时参考了这个文章，调通了xilinx官方的axidmatest.c 环境：uboot：2015.4    kernel 2015.3   vivado 2015.4.1">
@@ -276,8 +276,8 @@
 <p>axidma-test{<br>compatible = “xlnx,axi-dma-test-1.00.a”;<br>dmas = &lt;&amp;axi_dma_0 0 &amp;axi_dma_0 1&gt;;<br>dma-names = “axidma0”, “axidma1”;<br>};</p>
 <p>这个在xilinx官方论坛上有个帖子有说明，在4.0内核此要这个。</p>
 <p>2、在vivado中打开AXI DMA 的IP，修改width of Buffer Length Register 修改为16（默认是14，我不知道这个有没有影响）。</p>
-<p><strong>以下是原文：</strong><br>在之前的教程中，我介绍了如何在EDK中使用AXI DMA引擎，现在我将向您展示如何在Vivado中使用AXI DMA。我们将在Vivado中创建硬件设计，然后在Xilinx SDK中编写软件应用程序并在MicroZed板上进行测试（源代码在Github上用于MicroZed和ZedBoard，请参见底部的链接）。</p>
-<p><strong>什么是DMA？</strong></p>
+<p><strong>以下是原文：</strong></p>
+<h2 id="在之前的教程中，我介绍了如何在EDK中使用AXI-DMA引擎，现在我将向您展示如何在Vivado中使用AXI-DMA。我们将在Vivado中创建硬件设计，然后在Xilinx-SDK中编写软件应用程序并在MicroZed板上进行测试（源代码在Github上用于MicroZed和ZedBoard，请参见底部的链接）。"><a href="#在之前的教程中，我介绍了如何在EDK中使用AXI-DMA引擎，现在我将向您展示如何在Vivado中使用AXI-DMA。我们将在Vivado中创建硬件设计，然后在Xilinx-SDK中编写软件应用程序并在MicroZed板上进行测试（源代码在Github上用于MicroZed和ZedBoard，请参见底部的链接）。" class="headerlink" title="在之前的教程中，我介绍了如何在EDK中使用AXI DMA引擎，现在我将向您展示如何在Vivado中使用AXI DMA。我们将在Vivado中创建硬件设计，然后在Xilinx SDK中编写软件应用程序并在MicroZed板上进行测试（源代码在Github上用于MicroZed和ZedBoard，请参见底部的链接）。"></a>在之前的教程中，我介绍了如何在EDK中使用AXI DMA引擎，现在我将向您展示如何在Vivado中使用AXI DMA。我们将在Vivado中创建硬件设计，然后在Xilinx SDK中编写软件应用程序并在MicroZed板上进行测试（源代码在Github上用于MicroZed和ZedBoard，请参见底部的链接）。</h2><p><strong>什么是DMA？</strong></p>
 <h2 id="DMA代表直接内存访问，DMA引擎允许您将数据从系统的一部分传输到另一部分。DMA的最简单用法是将数据从存储器的一部分传输到另一部分，然而DMA引擎可用于将数据从任何数据产生器（例如ADC）传输到存储器，或从存储器传输到任何数据。数据消费者（例如DAC）。"><a href="#DMA代表直接内存访问，DMA引擎允许您将数据从系统的一部分传输到另一部分。DMA的最简单用法是将数据从存储器的一部分传输到另一部分，然而DMA引擎可用于将数据从任何数据产生器（例如ADC）传输到存储器，或从存储器传输到任何数据。数据消费者（例如DAC）。" class="headerlink" title="DMA代表直接内存访问，DMA引擎允许您将数据从系统的一部分传输到另一部分。DMA的最简单用法是将数据从存储器的一部分传输到另一部分，然而DMA引擎可用于将数据从任何数据产生器（例如ADC）传输到存储器，或从存储器传输到任何数据。数据消费者（例如DAC）。"></a>DMA代表直接内存访问，DMA引擎允许您将数据从系统的一部分传输到另一部分。DMA的最简单用法是将数据从存储器的一部分传输到另一部分，然而DMA引擎可用于将数据从任何数据产生器（例如ADC）传输到存储器，或从存储器传输到任何数据。数据消费者（例如DAC）。</h2><h4 id="教程概述"><a href="#教程概述" class="headerlink" title="教程概述"></a>教程概述</h4><p>在此设计中，我们将使用DMA将数据从内存传输到IP块并返回到内存。原则上，IP块可以是任何类型的数据生成器/消费者，例如ADC/DAC FMC，但在本教程中，我们将使用简单的FIFO来创建环回。之后，您将能够打破循环并插入您喜欢的任何自定义IP。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_130447.png" alt="fpga_developer_20140806_130447"><br>上面的框图说明了我们将创建的设计。处理器和DDR内存控制器包含在Zynq PS中。AXI DMA和AXI数据FIFO在Zynq PL中实现。AXI-lite总线允许处理器与AXI DMA通信，以设置，启动和监控数据传输。AXI_MM2S和AXI_S2MM是存储器映射的AXI4总线，提供对DDR存储器的DMA访问。AXIS_MM2S和AXIS_S2MM是AXI4流式总线，可以连接和接收连续的数据流，无需地址。</p>
 <h5 id="笔记："><a href="#笔记：" class="headerlink" title="笔记："></a>笔记：</h5><ol>
 <li>MM2S代表Memory-Mapped to Streaming，而S2MM代表Streaming to Memory-Mapped。</li>
