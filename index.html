@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,6 +14,7 @@
 <meta property="og:url" content="https://yaris079.github.io/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="Yaris079&apos;s personal blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yaris079的个人博客">
 <meta name="twitter:description" content="Yaris079&apos;s personal blog">
@@ -50,7 +51,7 @@
 </script>
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -213,7 +214,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文是转载自 <a href="http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html">http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html</a></p>
+        <p>此文是转载自 <a href="http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html" target="_blank" rel="noopener">http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html</a></p>
 <p>我在测试AXI DMA时参考了这个文章，调通了xilinx官方的axidmatest.c</p>
 <p>环境：uboot：2015.4    kernel 2015.3   vivado 2015.4.1<br></p>
         
@@ -279,7 +280,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="一、-交叉编译器："><a href="#一、-交叉编译器：" class="headerlink" title="一、 交叉编译器："></a>一、 交叉编译器：</h3><p>使用xilinx提供的编译器arm-xilinx-linux-gnueabi- Version 4.6.1版本。</p>
-<h4 id="1-添加交叉编译器的环境变量："><a href="#1-添加交叉编译器的环境变量：" class="headerlink" title="1. 添加交叉编译器的环境变量："></a>1. 添加交叉编译器的环境变量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ARCH=arm</div><div class="line"><span class="built_in">export</span> CROSS_COMPILE=arm-xilinx-linux-gnueabi-</div><div class="line"><span class="built_in">export</span> PATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:<span class="variable">$PATH</span></div></pre></td></tr></table></figure>
+<h4 id="1-添加交叉编译器的环境变量："><a href="#1-添加交叉编译器的环境变量：" class="headerlink" title="1. 添加交叉编译器的环境变量："></a>1. 添加交叉编译器的环境变量：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> ARCH=arm</span><br><span class="line"><span class="built_in">export</span> CROSS_COMPILE=arm-xilinx-linux-gnueabi-</span><br><span class="line"><span class="built_in">export</span> PATH=/root/CodeSourcery/Sourcery_CodeBench_Lite_for_Xilinx_GNU_Linux/bin/:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-检验交叉编译器安装是否成功："><a href="#2-检验交叉编译器安装是否成功：" class="headerlink" title="2. 检验交叉编译器安装是否成功："></a>2. 检验交叉编译器安装是否成功：</h4><p>在终端输入arm-xilinx-linux-gnueabi-gcc –v  查看版本号；</p>
 <p>说明安装成功。</p>
         

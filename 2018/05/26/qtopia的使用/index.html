@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>qtopia的使用 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2018/05/26/qtopia的使用/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="一、qtopia的安装：前面我们已经编译好了arm版和PC版的qtopia2.2.0。进入qtopia-free-2.2.0，我们可以看到4个文件用于设置环境变量：  setQpeEnv：QTOPIA用的！ setQteEnv：嵌入式开发用的声明文件； setDqtEnv setQt2Env">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-25T22:01:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qtopia的使用">
@@ -52,7 +53,7 @@
 </script>
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -232,11 +233,11 @@
 <h4 id="2、测试："><a href="#2、测试：" class="headerlink" title="2、测试："></a>2、测试：</h4><p>$qvfb &amp;<br>$./hello -qws<br>可以看到我们的hello world! 了。</p>
 <h3 id="四、自己使用designer来设计hello-world！"><a href="#四、自己使用designer来设计hello-world！" class="headerlink" title="四、自己使用designer来设计hello world！"></a>四、自己使用designer来设计hello world！</h3><h4 id="1、designer"><a href="#1、designer" class="headerlink" title="1、designer"></a>1、designer</h4><p>//启动qtopia自带的designer！<br>设计界面，hello world!<br>其中：窗体名为: Form1;<br>保存文件，test/form.ui</p>
 <p>打开designer后如果发现窗口都是透明的看不清楚内容，这是ubuntu开启了透明效果，<br>可以# XLIB_SKIP_ARGB_VISUALS=1 designer,但关闭shell后重新打开又会这样。<br>也可以在登陆时选择ubuntu 2D，或者编辑/etc/profie,加入export XLIB_SKIP_ARGB_VISUALS=1注销后重新登陆，这时ubuntu也关闭了透明效果。<br>打开designer后选择file–&gt;new–&gt;widget新建一个窗体</p>
-<h4 id="2、编写main-cpp文件："><a href="#2、编写main-cpp文件：" class="headerlink" title="2、编写main.cpp文件："></a>2、编写main.cpp文件：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">include </div><div class="line">include <span class="string">"form.h"</span></div><div class="line">int main(int argc, char *argv[])</div><div class="line">&#123;</div><div class="line">QApplication app(argc, argv);</div><div class="line">Form1 w;</div><div class="line">w.show();</div><div class="line"><span class="built_in">return</span> app.exec();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2、编写main-cpp文件："><a href="#2、编写main-cpp文件：" class="headerlink" title="2、编写main.cpp文件："></a>2、编写main.cpp文件：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">include </span><br><span class="line">include <span class="string">"form.h"</span></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">QApplication app(argc, argv);</span><br><span class="line">Form1 w;</span><br><span class="line">w.show();</span><br><span class="line"><span class="built_in">return</span> app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="3、生成工程文件："><a href="#3、生成工程文件：" class="headerlink" title="3、生成工程文件："></a>3、生成工程文件：</h4><p>$qmake -project CONFIG+=qtopia TARGET=test</p>
 <h4 id="4、生成Makefile文件："><a href="#4、生成Makefile文件：" class="headerlink" title="4、生成Makefile文件："></a>4、生成Makefile文件：</h4><p>$qmake -spec $QPEDIR/mkspecs/qws/linux-generic-g++ test.pro<br>$make</p>
 <h4 id="5-测试：-1"><a href="#5-测试：-1" class="headerlink" title="5.测试："></a>5.测试：</h4><p>$qvfb &amp;<br>$./test -qws</p>
-<h3 id="五、将自己写的hello-world-放到qtopia系统下运行："><a href="#五、将自己写的hello-world-放到qtopia系统下运行：" class="headerlink" title="五、将自己写的hello world 放到qtopia系统下运行："></a>五、将自己写的hello world 放到qtopia系统下运行：</h3><h4 id="1、编写test-desktop"><a href="#1、编写test-desktop" class="headerlink" title="1、编写test.desktop"></a>1、编写test.desktop</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[Translation]</div><div class="line">File=example-nct</div><div class="line">Context=<span class="built_in">test</span></div><div class="line">[Desktop Entry]</div><div class="line">Comment[]=An Example Program</div><div class="line">Exec=<span class="built_in">test</span></div><div class="line">Icon=<span class="built_in">test</span></div><div class="line">Type=Application</div><div class="line">Name[]=<span class="built_in">test</span></div></pre></td></tr></table></figure>
+<h3 id="五、将自己写的hello-world-放到qtopia系统下运行："><a href="#五、将自己写的hello-world-放到qtopia系统下运行：" class="headerlink" title="五、将自己写的hello world 放到qtopia系统下运行："></a>五、将自己写的hello world 放到qtopia系统下运行：</h3><h4 id="1、编写test-desktop"><a href="#1、编写test-desktop" class="headerlink" title="1、编写test.desktop"></a>1、编写test.desktop</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Translation]</span><br><span class="line">File=example-nct</span><br><span class="line">Context=<span class="built_in">test</span></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Comment[]=An Example Program</span><br><span class="line">Exec=<span class="built_in">test</span></span><br><span class="line">Icon=<span class="built_in">test</span></span><br><span class="line">Type=Application</span><br><span class="line">Name[]=<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
 <p>把test.desktop放在$QPEDIR/apps/Applications目录下</p>
 <h4 id="2、编辑图标文件，test-png"><a href="#2、编辑图标文件，test-png" class="headerlink" title="2、编辑图标文件，test.png"></a>2、编辑图标文件，test.png</h4><p>把test.png放在$QPEDIR/pics目录下，也可以在此目录下建自己的目录。</p>
 <h4 id="3、测试："><a href="#3、测试：" class="headerlink" title="3、测试："></a>3、测试：</h4><p>$cd $QPEDIR/bin<br>$./test -qws<br>可以看到我们的test程序</p>
@@ -323,18 +324,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/25/qtopia2-2-0-pc在Ubuntu下的编译/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          qtopia2-2-0-pc在Ubuntu下的编译
+          ZYNQ之uboot，kernel，设备树，文件系统生成
         
       </div>
     </a>
   
   
-    <a href="/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ZYNQ之uboot，kernel，设备树，文件系统生成</div>
+    <a href="/2018/05/25/qtopia2-2-0-pc在Ubuntu下的编译/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">qtopia2-2-0-pc在Ubuntu下的编译</div>
       <i class="icon-circle-right"></i>
     </a>
   

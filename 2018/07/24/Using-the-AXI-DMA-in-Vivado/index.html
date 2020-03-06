@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>Using the AXI DMA in Vivado | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="此文是转载自 http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html 我在测试AXI DMA时参考了这个文章，调通了xilinx官方的axidmatest.c 环境：uboot：2015.4    kernel 2015.3   vivado 2015.4.1">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_130447.png">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093459.png">
 <meta property="og:image" content="https://yaris079.github.io/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093726.png">
@@ -101,7 +102,7 @@
 </script>
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -262,7 +263,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文是转载自 <a href="http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html" target="_blank" rel="external">http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html</a></p>
+        <p>此文是转载自 <a href="http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html" target="_blank" rel="noopener">http://www.fpgadeveloper.com/2014/08/using-the-axi-dma-in-vivado.html</a></p>
 <p>我在测试AXI DMA时参考了这个文章，调通了xilinx官方的axidmatest.c</p>
 <p>环境：uboot：2015.4    kernel 2015.3   vivado 2015.4.1<br><a id="more"></a><br>修改的地方：</p>
 <p>1、用SDK生成设备树要添加axidmatest的节点：</p>
@@ -291,7 +292,7 @@
 <li>平台电缆USB II（或等效的JTAG编程器）</li>
 </ol>
 <h4 id="从基础项目开始"><a href="#从基础项目开始" class="headerlink" title="从基础项目开始"></a>从基础项目开始</h4><p>我们将使用MicroZed的基本系统项目开始本教程，您可以在此处访问：</p>
-<p><a href="http://www.fpgadeveloper.com/2014/07/creating-a-base-system-for-the-zynq-in-vivado.html" target="_blank" rel="external">MicroZed的基础系统项目</a></p>
+<p><a href="http://www.fpgadeveloper.com/2014/07/creating-a-base-system-for-the-zynq-in-vivado.html" target="_blank" rel="noopener">MicroZed的基础系统项目</a></p>
 <h4 id="添加AXI-DMA"><a href="#添加AXI-DMA" class="headerlink" title="添加AXI DMA"></a>添加AXI DMA</h4><p>1.在Vivado中打开基础项目。<br>2.在Flow Navigator中，单击”Open Block Design”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093459.png" alt="fpga_developer_20140806_093459"><br>3.程序框图应该打开，你应该只在设计中使用Zynq PS。<br>4.单击”添加IP”图标，然后双击目录中的”AXI直接内存访问”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093726.png" alt="fpga_developer_20140806_093726"></p>
 <h4 id="连接内存映射的AXI总线"><a href="#连接内存映射的AXI总线" class="headerlink" title="连接内存映射的AXI总线"></a>连接内存映射的AXI总线</h4><p>1.应该出现DMA块，并且应该提供设计人员帮助。单击”运行连接自动化”链接，然后从下拉菜单中选择”/axi_dma_0/S_AXI_LITE”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093807.png" alt="fpga_developer_20140806_093807"><br>2.在出现的窗口中单击”确定”。Vivado将DMA的AXI-lite总线连接到PS的通用AXI互连。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_093915.png" alt="fpga_developer_20140806_093915"><br>3.您的程序框图现在应如下所示：<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_094158.png" alt="fpga_developer_20140806_094158"><br>4.现在我们需要将DMA的AXI总线M_AXI_SG，M_AXI_MM2S和M_AXI_S2MM连接到PS上的高性能AXI从接口。我们的PS似乎没有高性能AXI从站接口，因此我们需要更改Zynq配置以启用它。双击Zynq块。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_094514.png" alt="fpga_developer_20140806_094514"><br>5.选择”PS-PL Configuration”，打开”HP Slave AXI Interface”分支并勾选”S AXI HP0接口”以启用它。然后单击确定。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_094801.png" alt="fpga_developer_20140806_094801"><br>6.现在，应在程序框图中显示高性能AXI从端口，并且应提供设计人员协助。单击”运行连接自动化”链接，然后从下拉菜单中选择”/processing_system7_0/S_AXI_HP0”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_094907.png" alt="fpga_developer_20140806_094907"><br>7.在出现的窗口中，确保Vivado打算将其连接到DMA并单击”确定”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_094955.png" alt="fpga_developer_20140806_094955"><br>8.再次提供Designer帮助，单击”运行连接自动化”链接，然后从下拉菜单中选择”/axi_dma_0/M_AXI_SG”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_095158.png" alt="fpga_developer_20140806_095158"><br>9.在出现的窗口中，单击”确定”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_095250.png" alt="fpga_developer_20140806_095250"><br>10.设计器帮助仍然可用，单击”运行连接自动化”链接并从下拉菜单中选择”/axi_dma_0/M_AXI_S2MM”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_095330.png" alt="fpga_developer_20140806_095330"><br>11.在出现的窗口中，单击”确定”。<br><img src="/2018/07/24/Using-the-AXI-DMA-in-Vivado/fpga_developer_20140806_095341.png" alt="fpga_developer_20140806_095341"></p>
 <p>现在所有内存映射的AXI总线都连接到DMA。现在我们只需要将AXI流总线连接到我们的环回FIFO并连接DMA中断。</p>
@@ -405,15 +406,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ZYNQ之uboot，kernel，设备树，文件系统生成
-        
-      </div>
-    </a>
   
+    <a href="/2018/07/20/ZYNQ之uboot，kernel，设备树，文件系统生成/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ZYNQ之uboot，kernel，设备树，文件系统生成</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

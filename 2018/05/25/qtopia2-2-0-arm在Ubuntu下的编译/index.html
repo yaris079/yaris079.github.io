@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yaris079.github.io">
   <title>qtopia2.2.0-arm在Ubuntu下的编译 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,6 +15,7 @@
 <meta property="og:url" content="https://yaris079.github.io/2018/05/25/qtopia2-2-0-arm在Ubuntu下的编译/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
 <meta property="og:description" content="1.编译第三方库编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-25T15:39:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="qtopia2.2.0-arm在Ubuntu下的编译">
@@ -52,7 +53,7 @@
 </script>
 
 </head>
-
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -215,24 +216,24 @@
       
         <h3 id="1-编译第三方库"><a href="#1-编译第三方库" class="headerlink" title="1.编译第三方库"></a>1.编译第三方库</h3><p>编译qtopia-free-forlinx-2.2.0 前确认已经把您刚 才制作的/root/yizhi/arminclude 下的文件放到交叉编译器目录 “arm-none-linux-gnueabi\libc\usr\include” 里面，所有的库文件放到交叉编译器安装目录的“arm-none-linux-gnueabi\libc\usr\lib” 文件夹下面</p>
 <a id="more"></a>
-<p>另外需要注意的是用官方提供的 Qtopia2.2.0 源代码编译出来的版本，主界面的图标下会出现一条虚线，影响美观，将ARM-qtopia-free-src-2.2.0.tar.gz解压到 /root/yizhi 文 件 夹 后（yizhi 是自己建立的文件夹），<br>打开qtopia-free-2.2.0/qtopia/src/qt/qconfig-qpe.h 文件，在里面增加以下内容即可解决虚线的问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#define QT_NO_QWS_GFX_SPEED</span></div></pre></td></tr></table></figure></p>
+<p>另外需要注意的是用官方提供的 Qtopia2.2.0 源代码编译出来的版本，主界面的图标下会出现一条虚线，影响美观，将ARM-qtopia-free-src-2.2.0.tar.gz解压到 /root/yizhi 文 件 夹 后（yizhi 是自己建立的文件夹），<br>打开qtopia-free-2.2.0/qtopia/src/qt/qconfig-qpe.h 文件，在里面增加以下内容即可解决虚线的问题：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define QT_NO_QWS_GFX_SPEED</span></span><br></pre></td></tr></table></figure></p>
 <p>修改脚本脚本里面有编译时需要的环境变量：<br>gedit build </p>
 <p>注意：编译过程中产生的状态信息将记录到当前目录下的 qtopia2.2.0Makelog 文件里面，<br>如果编译过程中产生了大量的错误信息，打开该文件，查找 error 关键字进行问题的定位，里面记录的信息对您很有帮助，有时焦点不会停留在出现错误的位置，这时查看日志文件就很重要了。 </p>
 <h3 id="2-常见bug"><a href="#2-常见bug" class="headerlink" title="2 常见bug"></a>2 常见bug</h3><h4 id="2-1-open函数缺少必要的参数"><a href="#2-1-open函数缺少必要的参数" class="headerlink" title="2.1 open函数缺少必要的参数"></a>2.1 open函数缺少必要的参数</h4><p>   错误信息：<br><code>In function ‘int open(const char*, int, ...)’, 
     inlined from ‘QMemoryFileData* QMemoryFile::openData(const QString&amp;, int, uint)’ at tools/qmemoryfile_unix.cpp:143:54: 
 /usr/include/i386-linux-gnu/bits/fcntl2.h:51:26: error: call to ‘__open_missing_mode’ declared with attribute error: open with O_CREAT in second argument needs 3 arguments</code><br>　　修改：<br>　　文件路径：（此错误有两处）<br>　　/root/yizhi/qtopia-free-2.2.0/qt2/src/tools/qmemoryfile_unix.cpp　　找到：（143行）<br>　　/root/yizhi/qtopia-free-2.2.0/qtopia/src/libraries/qtopia/qmemoryfile_unix.cpp　　找到：（141行） </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY);</div></pre></td></tr></table></figure>
-<p>修改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY, 0666);</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY);</span><br></pre></td></tr></table></figure>
+<p>修改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f = ::open(tmpFile.latin1(), O_CREAT | O_WRONLY, 0666);</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-2缺少头文件错误"><a href="#2-2缺少头文件错误" class="headerlink" title="2.2缺少头文件错误"></a>2.2缺少头文件错误</h4><p>错误信息：<br><code>../include/qmap.h:107:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qmap.h:223:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qvaluelist.h:88:13: error: ‘ptrdiff_t’ does not name a type 
 ../include/qvaluelist.h:164:13: error: ‘ptrdiff_t’ does not name a type 
 make[2]: *** [.obj/release-shared-mt/qapplication_x11.o] Error 1</code><br>修改方法： </p>
-<p>在qtopia-free-2.2.0/dqt/include的qvaluelist.h和qmap.h文件下增加两个头文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include "stddef.h"</span></div><div class="line"><span class="comment">#include &lt;cstddef&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在qtopia-free-2.2.0/dqt/include的qvaluelist.h和qmap.h文件下增加两个头文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include "stddef.h"</span></span><br><span class="line"><span class="comment">#include &lt;cstddef&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>搜索文件命令: find –name “qmap.h”   </p>
 <h4 id="2-3-使用未定义的类"><a href="#2-3-使用未定义的类" class="headerlink" title="2.3 使用未定义的类"></a>2.3 使用未定义的类</h4><p>错误信息：<br><code>/root/yizhi/qtopia-free-2.2.0/qt2/include/qwindowsystem_qws.h:230: error: &#39;QWSInputMethod&#39; has not been declared 
 /root/yizhi/qtopia-free-2.2.0/qt2/include/qwindowsystem_qws.h:237: error: &#39;QWSGestureMethod&#39; has not been declared 
-make[1]: *** [allmoc.o] Error 1</code><br>修改：<br>cd /root/yizhi/qtopia-free-2.2.0/qt2/src/kernel<br>gedit qwindowsystem_qws.h<br>在前面增加以下两行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class QWSInputMethod; </div><div class="line">class QWSGestureMethod;</div></pre></td></tr></table></figure></p>
+make[1]: *** [allmoc.o] Error 1</code><br>修改：<br>cd /root/yizhi/qtopia-free-2.2.0/qt2/src/kernel<br>gedit qwindowsystem_qws.h<br>在前面增加以下两行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class QWSInputMethod; </span><br><span class="line">class QWSGestureMethod;</span><br></pre></td></tr></table></figure></p>
 <p>保存退出，继续编译</p>
 <h4 id="2-4缺少uuid库"><a href="#2-4缺少uuid库" class="headerlink" title="2.4缺少uuid库"></a>2.4缺少uuid库</h4><p><code>Creating pngscale...make[1]: Entering directory /root/yizhi/qtopia-free-2.2.0/qtopia/util/pngscal
 .................................................................make[1]: *** [../../bin/pngscale] Error 1 
@@ -241,7 +242,7 @@ Failed to make pngscale</code><br>修改方法：<br>apt-get install  uuid-dev <
 <h4 id="2-5缺少系统头文件"><a href="#2-5缺少系统头文件" class="headerlink" title="2.5缺少系统头文件"></a>2.5缺少系统头文件</h4><p>错误信息：<br><code>kernel/qpixmapcache.cpp:125: fatal error: asm/page.h: No such file or directory 
 compilation terminated. 
 make[1]: *** [tmp/release-shared-linux-arm-g++-no-keypad/kernel/qpixmapcache.o] Error 1 
-make[1]: Leaving directory /root/yizhi/qtopia-free-2.2.0/qt2/src&#39;</code><br>修改：<br>路径(两个地方)：<br>/root/yizhi/qtopia-free-2.2.0/qt2/src/kernel/qpixmapcache.cpp   第125行<br>./root/yizhi/qtopia-free-2.2.0/qt2/tools/qvfb/qvfbview.cpp   第39行<br>修改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#define PAGE_SHIFT 12</span></div><div class="line"><span class="comment">#define PAGE_SIZE(1UL &lt;&lt; PAGE_SHIFT)</span></div><div class="line"><span class="comment">#define PAGE_MASK(~(PAGE_SIZE-1))</span></div><div class="line">//<span class="comment">#include//PAGE_SIZE,PAGE_MASK,PAGE_ALIGN</span></div></pre></td></tr></table></figure></p>
+make[1]: Leaving directory /root/yizhi/qtopia-free-2.2.0/qt2/src&#39;</code><br>修改：<br>路径(两个地方)：<br>/root/yizhi/qtopia-free-2.2.0/qt2/src/kernel/qpixmapcache.cpp   第125行<br>./root/yizhi/qtopia-free-2.2.0/qt2/tools/qvfb/qvfbview.cpp   第39行<br>修改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define PAGE_SHIFT 12</span></span><br><span class="line"><span class="comment">#define PAGE_SIZE(1UL &lt;&lt; PAGE_SHIFT)</span></span><br><span class="line"><span class="comment">#define PAGE_MASK(~(PAGE_SIZE-1))</span></span><br><span class="line">//<span class="comment">#include//PAGE_SIZE,PAGE_MASK,PAGE_ALIGN</span></span><br></pre></td></tr></table></figure></p>
 <p>这样修改是因为新的 Linux 内核源代码中已经不包含该头文件了。 </p>
 <h4 id="2-6-this指针"><a href="#2-6-this指针" class="headerlink" title="2.6 this指针"></a>2.6 this指针</h4><p>错误信息：<br><code>root/yizhi/qtopia-free-2.2.0/qt2/include/qvaluestack.h:57:6: error: cannot convert ‘QValueList&lt;qmap &gt;::Iterator {aka QValueListIterator&lt;qmap &gt;}&lt;/qmap&lt;/qmap’ to ‘const char*’ for argument ‘1’ to ‘int remove(const char*)’ 
 /root/yizhi/qtopia-free-2.2.0/qt2/include/qvaluestack.h: In member function ‘T QValueStack::pop() [with T = QString]’: 
@@ -265,16 +266,16 @@ minefield.h:106: error: extra qualification
 <p>2.8.10<br><code>keyboard.h:60: error: extra qualification &#39;KeyboardPicks::&#39; on member &#39;KeyboardPicks&#39;</code><br>修改：<br>路径：<br>./root/yizhi/qtopia-free-2.2.0/qtopia/src/plugins/inputmethods/keyboard/keyboard.h（60行）<br>去掉~ KeyboardPicks前面的’KeyboardPicks::’ </p>
 <p>2.8.11<br><code>polished.h:58: error: extra qualification &#39;PolishedDecoration::&#39; on member &#39;drawBlend&#39;</code><br>修改：<br>路径：<br>./root/yizhi/qtopia-free-2.2.0/qtopia/src/plugins/decorations/polished/polished.h（58行）<br>去掉’PolishedDecoration::’</p>
 <p>2.8.12<br><code>inputmethods.cpp:86: error: extra qualification &#39;IMToolButton::&#39; on member &#39;IMToolButton&#39;</code><br>修改：<br>路径：<br>./root/yizhi/qtopia-free-2.2.0/qtopia/src/server/inputmethods.cpp（86行）<br>去掉’IMToolButton::’</p>
-<h4 id="2-9类型转换错误"><a href="#2-9类型转换错误" class="headerlink" title="2.9类型转换错误"></a>2.9类型转换错误</h4><p>2.9.1<br><code>backend/vobject.cpp:419: error: invalid conversion from &#39;const char*&#39; to &#39;char*&#39;</code><br>修改：<br>./root/yizhi/qtopia-free-2.2.0/qtopia/src/libraries/qtopia/backend/vobject.cpp（419行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">char *dot = (char *)strrchr(g,<span class="string">'.'</span>);</div></pre></td></tr></table></figure></p>
-<p>2.9.2<br><code>wavplugin.cpp:435: error: invalid conversion from &#39;const char*&#39; to &#39;char*&#39;</code><br>修改：<br>/root/yizhi/qtopia-free-2.2.0/qtopia/src/plugins/codecs/wavplugin/wavplugin.cpp（435行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">char *ext = (char *)strrchr( path.latin1(), <span class="string">'.'</span> );</div></pre></td></tr></table></figure></p>
+<h4 id="2-9类型转换错误"><a href="#2-9类型转换错误" class="headerlink" title="2.9类型转换错误"></a>2.9类型转换错误</h4><p>2.9.1<br><code>backend/vobject.cpp:419: error: invalid conversion from &#39;const char*&#39; to &#39;char*&#39;</code><br>修改：<br>./root/yizhi/qtopia-free-2.2.0/qtopia/src/libraries/qtopia/backend/vobject.cpp（419行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char *dot = (char *)strrchr(g,<span class="string">'.'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>2.9.2<br><code>wavplugin.cpp:435: error: invalid conversion from &#39;const char*&#39; to &#39;char*&#39;</code><br>修改：<br>/root/yizhi/qtopia-free-2.2.0/qtopia/src/plugins/codecs/wavplugin/wavplugin.cpp（435行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char *ext = (char *)strrchr( path.latin1(), <span class="string">'.'</span> );</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-10库文件位置"><a href="#2-10库文件位置" class="headerlink" title="2.10库文件位置"></a>2.10库文件位置</h4><p><code>/root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to &#39;ts_read_raw&#39; 
 /root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to &#39;ts_open&#39; 
 /root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to &#39;ts_fd&#39; 
 /root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to &#39;ts_config&#39; 
 /root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to &#39;ts_close&#39; 
 /root/yizhi/qtopia-free-2.2.0/qtopia/lib/libqte.so: undefined reference to ts_read&#39;</code><br>修改：<br>把/usr/local/tslib下的相关库<br>libts-0.0.so.*类<br>拷到/usr/local/arm/arm-2009q3/arm-none-linux-gnueabi/libc/lib下面 </p>
-<h4 id="2-11缺少文件"><a href="#2-11缺少文件" class="headerlink" title="2.11缺少文件"></a>2.11缺少文件</h4><figure class="highlight plain"><figcaption><span>致命错误： linux/videodev.h：没有那个文件或目录</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">编译中断。</div><div class="line">make[6]: *** [.obj/release-shared/videocaptureview.o] 错误 1</div></pre></td></tr></table></figure>
-<p>解决方法<br>修改：<br>/root/yizhi/qtopia-free-2.2.0/qtopia/src/applications/camera/videocaptureview.cpp（54行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#inlude &lt;libv4l1-videodev.h&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="2-11缺少文件"><a href="#2-11缺少文件" class="headerlink" title="2.11缺少文件"></a>2.11缺少文件</h4><figure class="highlight plain"><figcaption><span>致命错误： linux/videodev.h：没有那个文件或目录</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编译中断。</span><br><span class="line">make[6]: *** [.obj/release-shared/videocaptureview.o] 错误 1</span><br></pre></td></tr></table></figure>
+<p>解决方法<br>修改：<br>/root/yizhi/qtopia-free-2.2.0/qtopia/src/applications/camera/videocaptureview.cpp（54行）<br>改为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#inlude &lt;libv4l1-videodev.h&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>以上是在飞凌嵌入式S5PV210 OK210开发板上的操作。 </p>
 
       
@@ -359,18 +360,18 @@ minefield.h:106: error: extra qualification
   
 <nav id="article-nav">
   
-    <a href="/2017/05/07/Qt-arm/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/25/qtopia2-2-0-pc在Ubuntu下的编译/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Qt_arm
+          qtopia2-2-0-pc在Ubuntu下的编译
         
       </div>
     </a>
   
   
-    <a href="/2018/05/25/qtopia2-2-0-pc在Ubuntu下的编译/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">qtopia2-2-0-pc在Ubuntu下的编译</div>
+    <a href="/2017/05/07/Qt-arm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Qt_arm</div>
       <i class="icon-circle-right"></i>
     </a>
   
