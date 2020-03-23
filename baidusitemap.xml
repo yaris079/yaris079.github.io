@@ -123,56 +123,5 @@
     </url>
 
     
-  <url>
-    <loc>https://yaris079.github.io/2017/04/05/how-to-write-a-hexo-artical/</loc>
-    <lastmod>2017-09-10T11:05:18.000Z</lastmod>
-    <data>
-        <display>
-        <title>如何写一篇hexo博客</title>
-        <pubTime>2017-04-04T23:35:38.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
     
-  <url>
-    <loc>https://yaris079.github.io/2017/04/13/hanoi/</loc>
-    <lastmod>2017-09-10T10:51:22.000Z</lastmod>
-    <data>
-        <display>
-        <title>hanoi</title>
-        <pubTime>2017-04-13T01:58:29.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-  <url>
-    <loc>https://yaris079.github.io/2017/03/27/first-blog/</loc>
-    <lastmod>2017-04-05T06:44:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>first blog</title>
-        <pubTime>2017-03-27T13:48:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
 </urlset>
