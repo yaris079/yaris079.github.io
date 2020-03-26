@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://yaris079.github.io">
-  <title>Archives: 2017/5 | Yaris079的个人博客</title>
+  <title>UVM学习笔记1--UVM世界观 | Yaris079的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yaris079&apos;s personal blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yaris079的个人博客">
-<meta property="og:url" content="https://yaris079.github.io/archives/2017/05/index.html">
+  <meta name="description" content="UVM世界观1. 初识UVM1.1 验证的作用现代IC的前端设计通常是从一份需求说明书开始的。从需求说明书开始，IC工程师会把它细化为特性列表，验证工程师根据特性列表写出验证规格说明书。在验证规格说明书中，将会说明如何搭建验证平台，如何保证验证完备性，如何测试每一条特性，如何检测异常的情况等。设计人员使用Verilog(或VHDL)将特性列表转化成RTL代码，验证人员使用SystemVerilog">
+<meta name="keywords" content="UVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVM学习笔记1--UVM世界观">
+<meta property="og:url" content="https://yaris079.github.io/2020/03/23/UVM学习笔记1-UVM世界观/index.html">
 <meta property="og:site_name" content="Yaris079的个人博客">
-<meta property="og:description" content="Yaris079&apos;s personal blog">
+<meta property="og:description" content="UVM世界观1. 初识UVM1.1 验证的作用现代IC的前端设计通常是从一份需求说明书开始的。从需求说明书开始，IC工程师会把它细化为特性列表，验证工程师根据特性列表写出验证规格说明书。在验证规格说明书中，将会说明如何搭建验证平台，如何保证验证完备性，如何测试每一条特性，如何检测异常的情况等。设计人员使用Verilog(或VHDL)将特性列表转化成RTL代码，验证人员使用SystemVerilog">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-26T07:46:02.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yaris079的个人博客">
-<meta name="twitter:description" content="Yaris079&apos;s personal blog">
+<meta name="twitter:title" content="UVM学习笔记1--UVM世界观">
+<meta name="twitter:description" content="UVM世界观1. 初识UVM1.1 验证的作用现代IC的前端设计通常是从一份需求说明书开始的。从需求说明书开始，IC工程师会把它细化为特性列表，验证工程师根据特性列表写出验证规格说明书。在验证规格说明书中，将会说明如何搭建验证平台，如何保证验证完备性，如何测试每一条特性，如何检测异常的情况等。设计人员使用Verilog(或VHDL)将特性列表转化成RTL代码，验证人员使用SystemVerilog">
   
     <link rel="alternative" href="/atom.xml" title="Yaris079的个人博客" type="application/atom+xml">
   
@@ -192,98 +194,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-UVM学习笔记1-UVM世界观" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/Qt-arm/" class="archive-article-date">
-  	<time datetime="2017-05-07T13:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/Qt-arm/">Qt_arm</a>
+    <h1 class="article-title" itemprop="name">
+      UVM学习笔记1--UVM世界观
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/23/UVM学习笔记1-UVM世界观/" class="archive-article-date">
+  	<time datetime="2020-03-23T13:28:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UVM世界观"><a href="#UVM世界观" class="headerlink" title="UVM世界观"></a>UVM世界观</h1><h2 id="1-初识UVM"><a href="#1-初识UVM" class="headerlink" title="1. 初识UVM"></a>1. 初识UVM</h2><h3 id="1-1-验证的作用"><a href="#1-1-验证的作用" class="headerlink" title="1.1 验证的作用"></a>1.1 验证的作用</h3><p>现代IC的前端设计通常是从一份需求说明书开始的。从需求说明书开始，IC工程师会把它细化为特性列表，验证工程师根据特性列表写出验证规格说明书。在验证规格说明书中，将会说明如何搭建验证平台，如何保证验证完备性，如何测试每一条特性，如何检测异常的情况等。设计人员使用Verilog(或VHDL)将特性列表转化成RTL代码，验证人员使用SystemVerilog设计验证平台，将RTL代码作为DUT(Design Under Test)进行验证。验证主要包括从特性列表到RTL转变的正确性，包括但不限于以下几点：<br><a id="more"></a></p>
+<ul>
+<li>DUT的行为表现是否与特性列表中要求的一致。</li>
+<li>DUT是否实现了所有特性列表中列出的特性。</li>
+<li>DUT对于异常状况的反应是否与特性列表和设计规格说明书中的一致，如中断是否置起。</li>
+<li>DUT是否足够稳健，能够从异常状态中恢复到正常的工作模式。</li>
+</ul>
+<h3 id="1-2-验证语言"><a href="#1-2-验证语言" class="headerlink" title="1.2 验证语言"></a>1.2 验证语言</h3><p>SystemVerilog(以下简称为SV)是Verilog的一个扩展集，完全可以兼容Verilog。SV具有面向对象的语言特性，同时为验证提供了很多独有的特性，比如约束、功能覆盖率等。SV提供了API函数，可以快速将C/C++函数导入SV中，同时SV提供了自动的内存管理机制，对于生命周期结束的对象会自动释放，不需要担心内存泄漏的问题。</p>
+<p>随着SV在验证语言层面的统一，UVM作为高级验证方法在2011年2月之后逐步融合，发布了<strong>UVM1.0</strong>。UVM面向所有数字设计，涵盖从模块级到芯片级，从ASIC到FPGA，从控制逻辑、数据通路到处理器的全部场景。</p>
+<h2 id="2-SystemVerilog特性回顾"><a href="#2-SystemVerilog特性回顾" class="headerlink" title="2. SystemVerilog特性回顾"></a>2. SystemVerilog特性回顾</h2><p>在开始UVM之前，我觉得有必要回顾一下SV的语法，对于理解UVM还是很有帮助的。</p>
+<h3 id="2-1-接口"><a href="#2-1-接口" class="headerlink" title="2.1 接口"></a>2.1 接口</h3><p>要完成充分的验证，需要给连接的各模块充分的激励。在发生激励之前，我们采用接口(interface)进行stimulator与DUT的连接。interface的基本作用主要有两点：</p>
+<ul>
+<li>简化模块间的连接</li>
+<li>实现类和模块之间的通信</li>
+</ul>
+<p>interface可以看作是一束连线，如果将interface作为路由器，那么只要和interface接口一致，多个模块都可以使用这个interface，也不需要担心信号的驱动方向、连接性问题。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> regs_ini_if</span><br><span class="line">#(<span class="keyword">parameter</span> <span class="keyword">int</span> data_width = <span class="number">32</span>);</span><br><span class="line"><span class="keyword">logic</span>                       clk;</span><br><span class="line"><span class="keyword">logic</span>                       rstn;</span><br><span class="line"><span class="keyword">logic</span>   [<span class="number">1</span>:<span class="number">0</span>]               cmd;</span><br><span class="line"><span class="keyword">logic</span>   [<span class="number">7</span>:<span class="number">0</span>]               addr;</span><br><span class="line"><span class="keyword">logic</span>   [data_width-<span class="number">1</span>:<span class="number">0</span>]    data_w;</span><br><span class="line"><span class="keyword">logic</span>   [data_width-<span class="number">1</span>:<span class="number">0</span>]    data_r;</span><br><span class="line"><span class="keyword">endinterface</span>: regs_ini_if</span><br></pre></td></tr></table></figure>
+<p>一种新加的和interface有关系的构造体是modport。由于接口中信号声明本身没有方向，为避免连接错误或反向驱动问题，为了限制信号的权限和访问方向，可以使用modport做进一步的说明。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> regs_ini_if</span><br><span class="line">...(省略了接口说明)</span><br><span class="line"><span class="keyword">modport</span> dut(</span><br><span class="line">    <span class="keyword">input</span> cmd,addr,data_w</span><br><span class="line">    <span class="keyword">output</span> data_r</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">modport</span> stim(</span><br><span class="line">    <span class="keyword">input</span> data_r,</span><br><span class="line">    <span class="keyword">output</span> cmd,addr,data_w</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">modport</span> mon(</span><br><span class="line">    <span class="keyword">input</span> cmd,addr,data_r,data_w</span><br><span class="line">);</span><br><span class="line"><span class="keyword">endinterface</span>: regs_ini_if</span><br></pre></td></tr></table></figure>
+<p>interface里面可以带时钟、断言、任务(task)、函数(function)等定义。<br>一个interface 也可以有input,output或是inout端口。而modport提供了module的interface端口和在特定的module中控制task和function使用的方向性信息。这些端口的方向可以在module中可以看到。</p>
+<p>总的来说,interface指明了TB和DUT之间的连接信号，clocking规定了信号之间的时序关系，而modport则明确了站在不同的角度对应信号的输入输出方向。通过虚拟接口的定义将以上内容封装起来。</p>
+<h3 id="2-2-激励"><a href="#2-2-激励" class="headerlink" title="2.2 激励"></a>2.2 激励</h3><p>我们通过interface进行验证组件和DUT之间的连接，连接好后，激励通过接口向DUT传递，为了给出符合接口协议的激励，我们需要遵循接口的时序关系。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> stm_ini;</span><br><span class="line"><span class="keyword">virtual</span> <span class="keyword">interface</span> regs_ini_if vif;</span><br><span class="line">localparm IDEL = <span class="number">2'b00</span>;</span><br><span class="line">localparm RD   = <span class="number">2'b00</span>;</span><br><span class="line">localparm WR   = <span class="number">2'b00</span>;</span><br><span class="line"><span class="keyword">logic</span> [ <span class="number">1</span>:<span class="number">0</span>] v_cmd;</span><br><span class="line"><span class="keyword">logic</span> [ <span class="number">7</span>:<span class="number">0</span>] v_addr;</span><br><span class="line"><span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] v_data_r;</span><br><span class="line"><span class="keyword">logic</span> [<span class="number">31</span>:<span class="number">0</span>] v_data_w;</span><br><span class="line"><span class="keyword">assign</span> cmd = v_cmd;</span><br><span class="line"><span class="keyword">assign</span> addr = v_addr;</span><br><span class="line"><span class="keyword">assign</span> data_r = v_data_r;</span><br><span class="line"><span class="keyword">assign</span> data_w = v_data_w;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span>&#123;         <span class="comment">// trans数据类型定义</span></span><br><span class="line">    <span class="keyword">bit</span> [ <span class="number">1</span>:<span class="number">0</span>] v_cmd;</span><br><span class="line">    <span class="keyword">bit</span> [ <span class="number">7</span>:<span class="number">0</span>] v_addr;</span><br><span class="line">    <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>] v_data_r;</span><br><span class="line">    <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>] v_data_w;</span><br><span class="line">&#125; trans;</span><br><span class="line">trans ts[<span class="number">3</span>];    <span class="comment">// trans固定数组声明和初始化</span></span><br><span class="line"><span class="keyword">task</span> op_wr(trans t);    <span class="comment">// 写指令定义</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">task</span> op_rd(trans t);    <span class="comment">// 读指令定义</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">task</span> op_parse(trans t);    <span class="comment">// 指令类型解析</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span>: stmgen     <span class="comment">//指令分发即产生激励</span></span><br><span class="line">    <span class="keyword">wait</span>(vif != <span class="literal">null</span>);</span><br><span class="line">    @(<span class="keyword">posedge</span> vif<span class="variable">.rstn</span>);</span><br><span class="line">    <span class="keyword">foreach</span>(ts[i]) <span class="keyword">begin</span></span><br><span class="line">        op_parse(ts[i]);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">repeat</span>(<span class="number">5</span>) @(<span class="keyword">posedge</span> vif<span class="variable">.clk</span>);</span><br><span class="line">    <span class="built_in">$finish</span>();</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>在stm_ini module里没有声明端口，激励不通过端口传递，而是interface进行数据的传递。virtual interface相当于interface的指针，可以被软件调用，而interface只能被硬件例化。virtual interface声明时，并不知道最终例化的regs_ini_if在何处，而它先假定regs_ini_if在仿真开始时可以被传递到virtual interface vif。</p>
+<p>数据激励的产生可以构造task对stm_ini内的ts进行赋值，但此方法需要验证人员构思数据产生方法，且随机性不够。因此我们可以采用随机化激励的方法产生激励。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> trans;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">1</span>:<span class="number">0</span>] cmd = WR;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">logic</span> [<span class="number">7</span>:<span class="number">0</span>] addr;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>] data_w;</span><br><span class="line">    <span class="keyword">bit</span> [<span class="number">31</span>:<span class="number">0</span>] data_r;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constraint</span> c1 &#123;cmd <span class="keyword">inside</span> &#123;IDLE, RD, WR&#125;; &#125;;</span><br><span class="line">    <span class="keyword">constraint</span> c2 &#123;addr <span class="keyword">inside</span> &#123;<span class="number">'h0</span>, <span class="number">'h4</span>, <span class="number">'h8</span>, <span class="number">'h10</span>, <span class="number">'h14</span>, <span class="number">'h18</span>&#125;; &#125;;</span><br><span class="line">    <span class="keyword">constraint</span> c3 &#123;data_w[<span class="number">31</span>:<span class="number">6</span>] == <span class="number">0</span>; &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">void</span> print();</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"cmd = 'h0x"</span>, cmd);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"addr = 'h0x"</span>, addr);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"data_w = 'h0x"</span>, data_w);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">"data_r = 'h0x"</span>, data_r);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<p>关于数据的随机化有以下几点需要注意：</p>
+<ul>
+<li>被标记为<strong>rand</strong>的成员变量作为随机成员可以通过randc轮转的方式完成随机化。即，在一个有效的随即周期里，每次生成的数据与之前生成的数不同，可用固定的周期遍历一次该变量可能的值域。</li>
+<li>随机成员要被随机化，必须由被例化的对象显式调用系统随机函数<strong>randomize()</strong>。</li>
+<li>悬空的成员类句柄会在随机过程中被忽略。</li>
+<li>string和real无法被随机化</li>
+</ul>
+<p>关于激励的随机化产生还有很多内容，包括约束块、随机化控制、随机化的稳定性等，这里就不再赘述。</p>
+<h3 id="2-3-Interface-clocking"><a href="#2-3-Interface-clocking" class="headerlink" title="2.3 Interface clocking"></a>2.3 Interface clocking</h3><p>硬件世界和软件世界的连接可以通过interface来实现，同时可以在接口中声明clocking(时钟块)和采样的时钟信号，用来做信号的同步和采样。clocking块基于时钟周期对信号进行驱动或采样的方式，消除信号竞争问题。</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">clocking</span> bus @(<span class="keyword">posedge</span> clock1);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">input</span> #<span class="number">10</span>ns <span class="keyword">output</span> #<span class="number">2</span>ns;</span><br><span class="line">    <span class="keyword">input</span> data, ready, enable = top<span class="variable">.mem1</span><span class="variable">.enable</span>;</span><br><span class="line">    <span class="keyword">output</span> <span class="keyword">negedge</span> ack;</span><br><span class="line">    <span class="keyword">input</span> #<span class="number">1</span>step addr;</span><br><span class="line"><span class="keyword">endclocking</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-4-组件间通信"><a href="#2-4-组件间通信" class="headerlink" title="2.4 组件间通信"></a>2.4 组件间通信</h3><p>Systemverilog中主要采用event、semaphore、mailbox三种方式实现组件间通信，具体实现方式与操作系统中通信方式类似。</p>
+<h2 id="3-UVM"><a href="#3-UVM" class="headerlink" title="3. UVM"></a>3. UVM</h2><p>SV作为验证的底层语言，自身已经可以搭建起一个简单的验证平台，但它撑不起芯片上庞大的验证规模，因此需要一个模板来让行文变得更容易，流畅和优美来应付各种复杂的场景。UVM更像是一个库，调用这个库的时候，可以使用其中写好的各种函数，大量代码可以复用，验证工程师只需要集中精力去设计所需的用例，考虑故障发生的情形就可以了。</p>
+<p>验证使用于找到DUT中的bug，这个过程通常是把DUT放入一个验证平台中来实现的。一个验证平台要实现如下基本功能：</p>
+<ul>
+<li>验证平台要模拟DUT中各种真实使用情况，这意味着要给DUT施加各种激励，激励的功能是由driver来实现的。</li>
+<li>验证平台要能够根据DUT的输出来判断DUT的行为是否与预期相符合，完成这个功能的是记分板（scoreboard，也被称为checker）。</li>
+<li>验证平台要收集DUT的输出并把它们传递给scoreboard，完成这个功能的是monitor。</li>
+<li>验证平台要能够给出预期结果。在记分板中提到了判断的标准，判断的标准通常就是预期。当DUT运行时，验证平台也必须相应完成同样的过程。在验证平台中，完成这个过程的是参考模型（reference model）。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">嵌入式arm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UVM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://yaris079.github.io/2020/03/23/UVM学习笔记1-UVM世界观/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/Xilinx-arm/" class="archive-article-date">
-  	<time datetime="2017-05-07T06:18:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/Xilinx-arm/">Xilinx_arm交叉编译器安装</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">嵌入式arm</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/24/Using-the-AXI-DMA-in-Vivado/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Using the AXI DMA in Vivado</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+
+
+
 
     
+        <section class="youyan" id="comments">
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=undefined"></script>
+</section>
+
+    
+
+
+
 
 
           </div>
@@ -314,8 +395,8 @@
 	var yiliaConfig = {
 		mathjax: ture,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
